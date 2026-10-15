@@ -92,6 +92,7 @@
     .case-visual.two { background: #ece9e5; }
     .case-visual.three { background: #fff1c7; }
     .case-status { position: absolute; left: 12px; top: 12px; padding: 5px 8px; color: #7e1827; background: #fffaf3e8; border-radius: 20px; font-size: 10px; font-weight: 700; }
+    .side-gallery { display: none; }
     .case-body { padding: 14px; }
     .case-meta { display: flex; justify-content: space-between; gap: 8px; color: #776c68; font-size: 11px; }
     .case-name { margin: 9px 0 4px; font-size: 16px; font-weight: 720; letter-spacing: -.3px; }
@@ -111,6 +112,23 @@
     .report-panel p { max-width: 640px; margin: 7px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
     .secondary { flex: 0 0 auto; padding: 11px 15px; color: var(--angola-red); background: white; border: 1px solid #ead5d6; border-radius: 9px; font-size: 12px; font-weight: 700; }
     .secondary:hover { background: #fff5f3; }
+    .sponsor-section { margin: 0 auto 52px; }
+    .sponsor-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
+    .sponsor-heading h2 { font-size: 23px; }
+    .sponsor-heading p { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+    .sponsor-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 13px; }
+    .sponsor-card { position: relative; min-height: 148px; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; padding: 18px; background: #fff; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 10px 28px #29151708; transition: transform .18s ease, box-shadow .18s ease; }
+    .sponsor-card:hover { transform: translateY(-3px); box-shadow: 0 15px 32px #29151712; }
+    .sponsor-card:first-child { color: #fff; background: linear-gradient(135deg, #171515, #3c1820); border-color: #3c1820; }
+    .sponsor-card:first-child:after { content: ""; position: absolute; right: -22px; top: -38px; width: 135px; height: 135px; border: 1px solid #f2c23055; border-radius: 50%; box-shadow: 0 0 0 16px #f2c23012, 0 0 0 32px #f2c2300a; }
+    .sponsor-card:first-child .sponsor-copy { color: #e8dfe0; }
+    .sponsor-label { color: var(--angola-red); font-size: 10px; font-weight: 760; letter-spacing: 1.2px; text-transform: uppercase; }
+    .sponsor-card:first-child .sponsor-label { color: var(--angola-gold); }
+    .sponsor-title { margin: 7px 0 0; font-size: 16px; font-weight: 720; letter-spacing: -.25px; }
+    .sponsor-copy { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .sponsor-action { position: relative; z-index: 1; margin-top: 14px; padding: 0; color: var(--angola-red); background: none; border: 0; font-size: 11px; font-weight: 750; }
+    .sponsor-card:first-child .sponsor-action { color: var(--angola-gold); }
+    .sponsor-action:hover { text-decoration: underline; }
     .investor-note { margin: 10px 0 0; color: #756a65; font-size: 11px; }
     footer { padding: 23px 0 28px; border-top: 1px solid #e6ebe5; color: #79867f; font-size: 11px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 18px; }
@@ -124,6 +142,23 @@
     .dialog-list { padding-left: 19px; color: #53655e; font-size: 13px; line-height: 1.7; }
     .dialog-list li + li { margin-top: 7px; }
     .dialog-close { float: right; padding: 7px 0 7px 12px; color: var(--angola-red); background: none; border: 0; font-size: 12px; font-weight: 700; }
+    @media (min-width: 1580px) and (min-height: 700px) {
+      .side-gallery { position: fixed; z-index: 2; top: 50%; width: min(180px, calc((100vw - 1160px - 72px) / 2)); display: block; padding: 11px; background: #ffffffdb; border: 1px solid #eee6de; border-radius: 16px; box-shadow: 0 16px 40px #29151710; backdrop-filter: blur(12px); transform: translateY(-50%); }
+      .side-gallery--left { left: 14px; }
+      .side-gallery--right { right: 14px; }
+      .side-gallery-title { margin: 0 0 9px; color: #83736d; font-size: 9px; font-weight: 760; letter-spacing: 1px; text-align: center; text-transform: uppercase; }
+      .side-gallery-stage { display: grid; overflow: hidden; border-radius: 10px; background: #f4e5cf; }
+      .side-person { grid-area: 1 / 1; opacity: 0; transform: scale(.96) translateY(5px); transition: opacity .45s ease, transform .55s ease; pointer-events: none; }
+      .side-person.is-active { opacity: 1; transform: scale(1) translateY(0); }
+      .side-person-portrait { height: clamp(150px, 24vh, 220px); display: grid; place-items: center; overflow: hidden; background: var(--portrait-bg, #f4e5cf); }
+      .side-person-portrait svg { width: 82%; height: 94%; filter: drop-shadow(0 8px 12px #29151718); }
+      .side-person-caption { padding: 9px 5px 7px; color: #554844; font-size: 10px; font-weight: 700; text-align: center; }
+      .side-gallery-foot { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 9px; }
+      .side-gallery-control { width: 28px; height: 28px; display: grid; place-items: center; color: var(--angola-red); background: #fff7eb; border: 1px solid #eee3d7; border-radius: 50%; font-size: 13px; }
+      .side-gallery-control:hover { background: #fff0c2; }
+      .side-gallery-control svg { width: 12px; height: 12px; }
+      .side-gallery-count { min-width: 28px; color: #83736d; font-size: 9px; font-weight: 700; text-align: center; }
+    }
     @media (max-width: 760px) {
       .shell { width: min(100% - 32px, 560px); }
       .topbar { height: 68px; }
@@ -147,6 +182,8 @@
       .report-panel { align-items: start; flex-direction: column; margin: -24px 0 56px; padding: 22px; }
       .secondary { align-self: start; }
       .footer-inner { flex-direction: column; }
+      .sponsor-grid { grid-template-columns: 1fr; }
+      .sponsor-heading { align-items: start; flex-direction: column; }
     }
     @media (max-width: 430px) {
       .search-box { gap: 4px; }
@@ -179,6 +216,66 @@
       <a class="report-link" href="#comunicar">Comunicar informação</a>
     </nav>
   </header>
+
+  <aside class="side-gallery side-gallery--left" data-gallery data-offset="0" aria-label="Galeria rotativa de retratos ilustrativos fictícios">
+    <p class="side-gallery-title">Galeria ilustrada</p>
+    <div class="side-gallery-stage">
+      <article class="side-person is-active" data-slide aria-hidden="false">
+        <div class="side-person-portrait" style="--portrait-bg:#f5e2e2">
+          <svg viewBox="0 0 120 150" fill="none" aria-hidden="true"><path d="M17 145c4-31 17-47 43-47s39 16 43 47" fill="#c8102e"/><path d="M41 99c2 11 8 17 19 17s17-6 19-17l-4-12H45l-4 12Z" fill="#C88E70"/><ellipse cx="60" cy="59" rx="29" ry="35" fill="#D7A080"/><path d="M31 58c-3-30 11-43 31-42 22 1 30 17 27 41-5-7-7-15-8-22-15 13-32 18-49 18v5Z" fill="#503B32"/><path d="M49 62h2m18 0h2" stroke="#503B32" stroke-width="2.5" stroke-linecap="round"/><path d="M54 77c4 3 8 3 12 0" stroke="#9B6257" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="side-person-caption">Retrato ilustrativo · 01</div>
+      </article>
+      <article class="side-person" data-slide aria-hidden="true">
+        <div class="side-person-portrait" style="--portrait-bg:#ece9e5">
+          <svg viewBox="0 0 120 150" fill="none" aria-hidden="true"><path d="M18 145c4-31 17-47 42-47s39 16 42 47" fill="#171515"/><path d="M42 99c2 10 8 16 18 16s16-6 18-16l-4-12H46l-4 12Z" fill="#9E684B"/><ellipse cx="60" cy="59" rx="28" ry="34" fill="#B67C59"/><path d="M32 50c1-22 12-34 30-34 19 0 28 13 27 33-8-8-14-13-19-20-7 7-19 12-38 13v8Z" fill="#302C29"/><path d="M50 63h2m16 0h2" stroke="#342C27" stroke-width="2.5" stroke-linecap="round"/><path d="M54 77c4 3 8 3 12 0" stroke="#835646" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="side-person-caption">Retrato ilustrativo · 02</div>
+      </article>
+      <article class="side-person" data-slide aria-hidden="true">
+        <div class="side-person-portrait" style="--portrait-bg:#fff1c7">
+          <svg viewBox="0 0 120 150" fill="none" aria-hidden="true"><path d="M17 145c4-31 17-47 43-47s39 16 43 47" fill="#f2c230"/><path d="M41 99c2 11 8 17 19 17s17-6 19-17l-4-12H45l-4 12Z" fill="#D5A080"/><ellipse cx="60" cy="59" rx="29" ry="35" fill="#E0B18E"/><path d="M31 63c-5-26 1-44 14-49 4 9 11 11 17 9 4-2 8-7 9-13 17 6 22 25 18 52-6-4-9-12-10-20-13 10-27 15-48 14v7Z" fill="#47352F"/><path d="M49 63h2m18 0h2" stroke="#483730" stroke-width="2.5" stroke-linecap="round"/><path d="M54 78c4 3 8 3 12 0" stroke="#A56A5A" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="side-person-caption">Retrato ilustrativo · 03</div>
+      </article>
+    </div>
+    <div class="side-gallery-foot">
+      <button class="side-gallery-control" type="button" data-gallery-step="-1" aria-label="Retrato anterior">←</button>
+      <span class="side-gallery-count" data-gallery-count aria-hidden="true">1 / 3</span>
+      <button class="side-gallery-control" type="button" data-gallery-toggle aria-pressed="false" aria-label="Pausar rotação dos retratos">Ⅱ</button>
+      <button class="side-gallery-control" type="button" data-gallery-step="1" aria-label="Próximo retrato">→</button>
+    </div>
+  </aside>
+
+  <aside class="side-gallery side-gallery--right" data-gallery data-offset="1" aria-label="Galeria rotativa de retratos ilustrativos fictícios">
+    <p class="side-gallery-title">Exemplos fictícios</p>
+    <div class="side-gallery-stage">
+      <article class="side-person" data-slide aria-hidden="true">
+        <div class="side-person-portrait" style="--portrait-bg:#ece9e5">
+          <svg viewBox="0 0 120 150" fill="none" aria-hidden="true"><path d="M18 145c4-31 17-47 42-47s39 16 42 47" fill="#171515"/><path d="M42 99c2 10 8 16 18 16s16-6 18-16l-4-12H46l-4 12Z" fill="#9E684B"/><ellipse cx="60" cy="59" rx="28" ry="34" fill="#B67C59"/><path d="M32 50c1-22 12-34 30-34 19 0 28 13 27 33-8-8-14-13-19-20-7 7-19 12-38 13v8Z" fill="#302C29"/><path d="M50 63h2m16 0h2" stroke="#342C27" stroke-width="2.5" stroke-linecap="round"/><path d="M54 77c4 3 8 3 12 0" stroke="#835646" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="side-person-caption">Retrato ilustrativo · 02</div>
+      </article>
+      <article class="side-person is-active" data-slide aria-hidden="false">
+        <div class="side-person-portrait" style="--portrait-bg:#fff1c7">
+          <svg viewBox="0 0 120 150" fill="none" aria-hidden="true"><path d="M17 145c4-31 17-47 43-47s39 16 43 47" fill="#f2c230"/><path d="M41 99c2 11 8 17 19 17s17-6 19-17l-4-12H45l-4 12Z" fill="#D5A080"/><ellipse cx="60" cy="59" rx="29" ry="35" fill="#E0B18E"/><path d="M31 63c-5-26 1-44 14-49 4 9 11 11 17 9 4-2 8-7 9-13 17 6 22 25 18 52-6-4-9-12-10-20-13 10-27 15-48 14v7Z" fill="#47352F"/><path d="M49 63h2m18 0h2" stroke="#483730" stroke-width="2.5" stroke-linecap="round"/><path d="M54 78c4 3 8 3 12 0" stroke="#A56A5A" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="side-person-caption">Retrato ilustrativo · 03</div>
+      </article>
+      <article class="side-person" data-slide aria-hidden="true">
+        <div class="side-person-portrait" style="--portrait-bg:#f5e2e2">
+          <svg viewBox="0 0 120 150" fill="none" aria-hidden="true"><path d="M17 145c4-31 17-47 43-47s39 16 43 47" fill="#c8102e"/><path d="M41 99c2 11 8 17 19 17s17-6 19-17l-4-12H45l-4 12Z" fill="#C88E70"/><ellipse cx="60" cy="59" rx="29" ry="35" fill="#D7A080"/><path d="M31 58c-3-30 11-43 31-42 22 1 30 17 27 41-5-7-7-15-8-22-15 13-32 18-49 18v5Z" fill="#503B32"/><path d="M49 62h2m18 0h2" stroke="#503B32" stroke-width="2.5" stroke-linecap="round"/><path d="M54 77c4 3 8 3 12 0" stroke="#9B6257" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="side-person-caption">Retrato ilustrativo · 01</div>
+      </article>
+    </div>
+    <div class="side-gallery-foot">
+      <button class="side-gallery-control" type="button" data-gallery-step="-1" aria-label="Retrato anterior">←</button>
+      <span class="side-gallery-count" data-gallery-count aria-hidden="true">2 / 3</span>
+      <button class="side-gallery-control" type="button" data-gallery-toggle aria-pressed="false" aria-label="Pausar rotação dos retratos">Ⅱ</button>
+      <button class="side-gallery-control" type="button" data-gallery-step="1" aria-label="Próximo retrato">→</button>
+    </div>
+  </aside>
 
   <main>
     <section class="shell hero" aria-labelledby="hero-title">
@@ -272,6 +369,26 @@
       <div><div class="section-kicker">Angola · orientação para comunicar</div><h2 id="report-title">Encontrou alguém? Comunique em privado às autoridades.</h2><p>Não publique a localização nem tente seguir ou abordar a pessoa. Este protótipo não recebe nem encaminha denúncias; consulte diretamente a Polícia Nacional de Angola ou uma unidade policial local.</p></div>
       <button class="secondary" id="report-open" type="button">Ver orientações</button>
     </section>
+    <section class="shell sponsor-section" id="publicidade" aria-labelledby="sponsor-title">
+      <div class="sponsor-heading">
+        <div><div class="section-kicker">Espaço para parceiros</div><h2 id="sponsor-title">Apoie uma rede que aproxima.</h2><p>Espaços publicitários demonstrativos, sujeitos a proposta e aprovação.</p></div>
+      </div>
+      <div class="sponsor-grid">
+        <article class="sponsor-card">
+          <div><div class="sponsor-label">Destaque · faixa principal</div><h3 class="sponsor-title">A sua marca pode dar visibilidade ao projeto.</h3><p class="sponsor-copy">Um espaço amplo para empresas e parceiros institucionais.</p></div>
+          <button class="sponsor-action" type="button" data-sponsor-slot="Destaque · faixa principal">Consultar este espaço →</button>
+        </article>
+        <article class="sponsor-card">
+          <div><div class="sponsor-label">Parceiro de impacto</div><h3 class="sponsor-title">Parceria com propósito.</h3><p class="sponsor-copy">Apresente iniciativas que fortalecem as comunidades.</p></div>
+          <button class="sponsor-action" type="button" data-sponsor-slot="Parceiro de impacto">Consultar este espaço →</button>
+        </article>
+        <article class="sponsor-card">
+          <div><div class="sponsor-label">Apoio local</div><h3 class="sponsor-title">Dê destaque ao seu negócio.</h3><p class="sponsor-copy">Visibilidade local num espaço publicitário reservado.</p></div>
+          <button class="sponsor-action" type="button" data-sponsor-slot="Apoio local">Consultar este espaço →</button>
+        </article>
+      </div>
+      <p class="investor-note">Posições de demonstração. O protótipo ainda não vende espaços nem aceita pagamentos ou reservas.</p>
+    </section>
   </main>
   <footer id="ajuda">
     <div class="shell footer-inner"><span><span class="footer-brand">laço Angola</span> · Um conceito para aproximar pessoas e informação.</span><span>Protótipo demonstrativo para apresentação. Não é serviço oficial nem recebe denúncias.</span></div>
@@ -300,6 +417,15 @@
       <div class="dialog-disclaimer">Não podemos bloquear IPs nem garantir que uma denúncia seja impossível de rastrear. O site não promete anonimato. Se a polícia disponibilizar um canal oficialmente anónimo, confirme as condições diretamente com essa instituição antes de o usar.</div>
     </div>
   </dialog>
+  <dialog id="sponsor-dialog" aria-labelledby="sponsor-dialog-title">
+    <div class="dialog-inner">
+      <button class="dialog-close" id="sponsor-close" type="button">Fechar ×</button>
+      <div class="section-kicker">Espaço publicitário demonstrativo</div>
+      <h2 id="sponsor-dialog-title">Parceria</h2>
+      <p>Este espaço apresenta uma opção de patrocínio para discussão com potenciais parceiros. Ainda não há tabela de preços, processo de reserva nem recolha de dados comerciais neste protótipo.</p>
+      <div class="dialog-disclaimer">A publicidade numa futura plataforma deverá ser claramente identificada, revista antes da publicação e nunca interferir com alertas, informação urgente ou a privacidade das famílias.</div>
+    </div>
+  </dialog>
   <script>
     const searchForm = document.querySelector("#search-form");
     const searchInput = document.querySelector("#search-input");
@@ -312,6 +438,55 @@
     const voiceButton = document.querySelector("#voice-button");
     const artScene = document.querySelector(".art");
     const artCard = document.querySelector(".art-card");
+
+    const galleries = [...document.querySelectorAll("[data-gallery]")];
+    const gallerySlides = galleries.map((gallery) => [...gallery.querySelectorAll("[data-slide]")]);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let activePortrait = 0;
+    let galleryPaused = reducedMotion.matches;
+
+    function updateGalleries() {
+      galleries.forEach((gallery, galleryIndex) => {
+        const slides = gallerySlides[galleryIndex];
+        const offset = Number(gallery.dataset.offset);
+        const activeIndex = (activePortrait + offset) % slides.length;
+        slides.forEach((slide, slideIndex) => {
+          const isActive = slideIndex === activeIndex;
+          slide.classList.toggle("is-active", isActive);
+          slide.setAttribute("aria-hidden", String(!isActive));
+        });
+        gallery.querySelector("[data-gallery-count]").textContent = `${activeIndex + 1} / ${slides.length}`;
+        const toggle = gallery.querySelector("[data-gallery-toggle]");
+        toggle.setAttribute("aria-pressed", String(galleryPaused));
+        toggle.setAttribute("aria-label", galleryPaused ? "Retomar rotação dos retratos" : "Pausar rotação dos retratos");
+        toggle.textContent = galleryPaused ? "▶" : "Ⅱ";
+      });
+    }
+
+    function stepGallery(direction) {
+      activePortrait = (activePortrait + direction + gallerySlides[0].length) % gallerySlides[0].length;
+      updateGalleries();
+    }
+
+    galleries.forEach((gallery) => {
+      gallery.querySelectorAll("[data-gallery-step]").forEach((button) => {
+        button.addEventListener("click", () => stepGallery(Number(button.dataset.galleryStep)));
+      });
+      gallery.querySelector("[data-gallery-toggle]").addEventListener("click", () => {
+        galleryPaused = !galleryPaused;
+        updateGalleries();
+      });
+    });
+    reducedMotion.addEventListener("change", (event) => {
+      if (event.matches) {
+        galleryPaused = true;
+        updateGalleries();
+      }
+    });
+    updateGalleries();
+    window.setInterval(() => {
+      if (!galleryPaused && !document.hidden) stepGallery(1);
+    }, 5000);
 
     function filterCases() {
       const term = searchInput.value.trim().toLocaleLowerCase();
@@ -406,6 +581,18 @@
     document.querySelector("#report-close").addEventListener("click", () => reportDialog.close());
     reportDialog.addEventListener("click", (event) => {
       if (event.target === reportDialog) reportDialog.close();
+    });
+
+    const sponsorDialog = document.querySelector("#sponsor-dialog");
+    document.querySelectorAll("[data-sponsor-slot]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelector("#sponsor-dialog-title").textContent = button.dataset.sponsorSlot;
+        sponsorDialog.showModal();
+      });
+    });
+    document.querySelector("#sponsor-close").addEventListener("click", () => sponsorDialog.close());
+    sponsorDialog.addEventListener("click", (event) => {
+      if (event.target === sponsorDialog) sponsorDialog.close();
     });
   </script>
 </body>
